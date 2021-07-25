@@ -1,14 +1,13 @@
 import { Purchase } from "../entities/Purchase";
 import { User } from "../entities/User";
-import { Resolver, Mutation, Arg, Field, InputType } from "type-graphql";
+import { Resolver, Mutation, Arg, Field, InputType, Ctx } from "type-graphql";
 import { Course } from "../entities/Course";
+import { MyContext } from "src/types";
 
 @InputType()
 export class PurchaseInput {
   @Field()
   courseID: number;
-  @Field()
-  userID: number;
   @Field()
   creditCard: string;
 }
@@ -17,14 +16,18 @@ export class PurchaseInput {
 export class PurchaseResolver {
   @Mutation(() => Purchase, { nullable: true })
   async purchase(
-    @Arg("options") options: PurchaseInput
+    @Arg("options") options: PurchaseInput,
+    @Ctx() { req }: MyContext
   ): Promise<Purchase | undefined> {
     const course = await Course.findOne(options.courseID);
     if (!course) {
       return;
     }
+    if (!req.session.userID) {
+      return;
+    }
 
-    const userID = options.userID;
+    const userID = req.session.userID;
 
     const user = await User.findOne(userID);
     if (!user) {
@@ -32,7 +35,7 @@ export class PurchaseResolver {
     }
 
     return Purchase.create({
-      userID: options.userID,
+      userID: userID,
       courseID: options.courseID,
       credicard: options.creditCard,
       paymetstatus: "success",

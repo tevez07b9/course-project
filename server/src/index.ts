@@ -30,6 +30,7 @@ const main = async () => {
     cors({
       origin: [
         process.env.CORS_ORIGIN as string,
+        "http://localhost:3000",
         "https://studio.apollographql.com",
       ],
       credentials: true,
@@ -45,7 +46,7 @@ const main = async () => {
       cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years
         httpOnly: false,
-        secure: true,
+        // secure: true,
         sameSite: "lax", // csrf
       },
       saveUninitialized: false,

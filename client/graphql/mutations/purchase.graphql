@@ -1,0 +1,21 @@
+mutation Purchase($purchaseOptions: PurchaseInput!) {
+  purchase(options: $purchaseOptions) {
+    id
+    courseID
+    userID
+    credicard
+    paymetstatus
+    user {
+      email
+      id
+      username
+    }
+    course {
+      title
+      thumbnailURL
+      pirce
+    }
+    createdAt
+    updatedAt
+  }
+}

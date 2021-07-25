@@ -1,0 +1,11 @@
+query ListCourses {
+  listCourse {
+    id
+    title
+    thumbnailURL
+    pirce
+    videoLink
+    createdAt
+    updatedAt
+  }
+}
