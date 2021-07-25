@@ -1,17 +1,20 @@
 ## Architecture
 
-Backend:
-Database: Postgres
-Server: Express with Apollo Server
-API: graphql using type-graphql
-ORM: typeorm - could have used Prisma with nexus as well
-Code: Typescript
-Frontend:
-Framework: NextJS with Typescript
-UI: Chakra UI - But i favourite now is Tailwind CSS.
-GraphqlClient: Urql - coz it has better caching i feel
-Specials - graphql generator to generate graphql hooks
-Others - react-hook-form for forms
+### Backend:
+
+1. Database: Postgres
+2. Server: Express with Apollo Server
+3. API: graphql using type-graphql
+4. ORM: typeorm - could have used Prisma with nexus as well
+5. Code: Typescript
+
+### Frontend
+
+1. Framework: NextJS with Typescript
+2. UI: Chakra UI - But i favourite now is Tailwind CSS.
+3. GraphqlClient: Urql - coz it has better caching i feel
+4. Specials - graphql generator to generate graphql hooks
+5. Others - react-hook-form for forms
 
 ## Setup
 
