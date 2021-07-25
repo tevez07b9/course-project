@@ -1,0 +1,9 @@
+npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run
+npx ts-node --transpile-only ./node_modules/typeorm/cli.js migration:generate -n <Name>
+
+
+steps:
+1. config postgres
+2. generate migrations
+3. run migrations
+4. setup redis
